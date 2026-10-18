@@ -1,0 +1,65 @@
+[tool.poetry]
+name = "python-project-template"
+version = "0.1.0"
+description = "Reusable Python project template"
+authors = ["Oksana Kuznetsova <okk.9.leto@gmail.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = ">=3.13"
+requests = ">=2.33.1"
+python-dotenv = ">=1.2.2"
+pytest = ">=9.0.3"
+more-itertools = ">=11.0.2"
+pandas = "^3.0.5"
+openpyxl = "^3.1.5"
+pandas-stubs = "~=3.0.5"
+
+[dependency-groups]
+lint = [
+    "flake8 (>=7.3.0,<8.0.0)",
+    "isort (>=8.0.0,<9.0.0)",
+    "black (>=26.1.0,<27.0.0)",
+    "mypy (>=1.19.1,<2.0.0)"
+]
+dev = [
+    "pytest (>=9.0.2,<10.0.0)",
+    "pytest-cov (>=7.0.0,<8.0.0)",
+    "types-requests (>=2.33.0.20260508,<3.0.0.0)"
+]
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+disallow_untyped_defs = true
+no_implicit_optional = true
+warn_return_any = true
+exclude = 'venv'
+ignore_missing_imports = true
+
+[tool.flake8]
+max-line-length = 119
+ignore = "E203, W503"
+exclude = ".git, __pycache__, venv, .venv"
+
+[tool.black]
+line-length = 119
+exclude = '''
+(
+  /(
+      \.eggs
+    | \.git
+    | \.hg
+    | \.mypy_cache
+    | \.tox
+    | \.venv
+    | dist
+  )/
+)
+'''
+
+[tool.isort]
+line_length = 119
+force_single_line = true
